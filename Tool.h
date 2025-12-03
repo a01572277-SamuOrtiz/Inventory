@@ -26,6 +26,7 @@ class Tool {
         void addAmount(int tamount);
         void removeAmount(int tamount);
         bool ReplaceTool(int year);
+        
         void displayTool() const;
 };
 
