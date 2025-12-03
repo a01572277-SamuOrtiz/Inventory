@@ -29,5 +29,5 @@ class Medicine{
 
         void displayMedicine() const;
 
-}
+};
 #endif // MEDICINE_H
