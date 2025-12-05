@@ -32,3 +32,30 @@ void Tool::setAmount(int tamount){
 void Tool::setYearBought(int yearb){
     yearbought = yearb;
 }
+
+void Tool::setYearChange(int yearc){
+    yearchange = yearc;
+}
+
+void Tool::addAmount(int tamount) {
+    amount += tamount;
+}
+
+void Tool::removeAmount(int tamount) {
+    amount -= tamount;
+    if (amount < 0) {
+        amount = 0;
+    }
+}
+
+bool Tool::ReplaceTool(int year) {
+    int yearsSincePurchase = year - yearbought;
+    return yearsSincePurchase >= yearchange;
+}
+
+void Tool::displayTool() const {
+    std::cout << "\nTool: " << name << "\n";
+    std::cout << "Amount: " << amount << "\n";
+    std::cout << "Year Bought: " << yearbought << "\n";
+    std::cout << "Replace After (years): " << yearchange << "\n";
+}

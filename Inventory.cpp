@@ -7,35 +7,35 @@ Inventory::Inventory() {
 
 void Inventory::displayAllMedicines() const {
     if (medicines.empty()) {
-        std::cout << "No medicines in stock";
+        std::cout << "No medicines in stock\n";
         return;
     }
 
-    std::cout << "===== Medicines in Inventory =====";
+    std::cout << "\n===== Medicines in Inventory =====\n";
     for (const auto& med : medicines) {
         med.displayMedicine();
-        std::cout << "================================";
+        std::cout << "================================\n";
     }
 }
 
 void Inventory::displayAllTools() const {
     if (tools.empty()) {
-        std::cout << "No tools in inventory";
+        std::cout << "No tools in inventory\n";
         return;
     }
 
-    std::cout << "======= Tools in Inventory =======";
+    std::cout << "\n======= Tools in Inventory =======\n";
     for (const auto& tool : tools) {
         tool.displayTool();
-        std::cout << "================================";
+        std::cout << "================================\n";
     }
 }
 
 void Inventory::displayInventory() const {
-    std::cout << "------------- Inventory -------------";
+    std::cout << "\n------------- Inventory -------------\n";
     displayAllMedicines();
     displayAllTools();
-    std::cout << "-------------------------------------";
+    std::cout << "-------------------------------------\n";
 }
 
 Medicine* Inventory::findMedicine(const std::string& name) {
@@ -46,7 +46,6 @@ Medicine* Inventory::findMedicine(const std::string& name) {
     }
     return nullptr;
 }
-
 
 Tool* Inventory::findTool(const std::string& name) {
     for(auto& tool : tools) {
@@ -61,10 +60,10 @@ void Inventory::addMedicine(const Medicine& medicine) {
     Medicine* existing = findMedicine(medicine.getName());
     if (existing != nullptr) {
         existing->addAmount(medicine.getAmount());
-        std::cout << "Added: " << medicine.getAmount() <<" to medicine: " << medicine.getName();
+        std::cout << "Added: " << medicine.getAmount() << " to medicine: " << medicine.getName() << "\n";
     } else {
         medicines.push_back(medicine);
-        std::cout << "New medicine added: " << medicine.getName();
+        std::cout << "New medicine added: " << medicine.getName() << "\n";
     }
 }
 
@@ -72,33 +71,33 @@ void Inventory::addTool(const Tool& tool) {
     Tool* existing = findTool(tool.getName());
     if (existing != nullptr) {
         existing->addAmount(tool.getAmount());
-        std::cout << "Added: " << tool.getAmount() << " to tool: " << tool.getName();
+        std::cout << "Added: " << tool.getAmount() << " to tool: " << tool.getName() << "\n";
     } else {
         tools.push_back(tool);
-        std::cout << "New tool added: " << tool.getName();
+        std::cout << "New tool added: " << tool.getName() << "\n";
     }
 }
 
-void Inventory::removeMedicine(const std::string& name){
+void Inventory::removeMedicine(const std::string& name) {
     for (auto it = medicines.begin(); it != medicines.end(); ++it) {
-        if (it->getName() == name){
+        if (it->getName() == name) {
             medicines.erase(it);
-            std::cout << "Removed medicine: " << name;
+            std::cout << "Removed medicine: " << name << "\n";
             return; 
         }
     }
-    std::cout << "Medicine not found: " << name;
+    std::cout << "Medicine not found: " << name << "\n";
 }
 
 void Inventory::removeTool(const std::string& name) {
-    for ( auto it = tools.begin(); it != tools.end(); ++it) {
-        if(it->getName() == name) {
+    for (auto it = tools.begin(); it != tools.end(); ++it) {
+        if (it->getName() == name) {
             tools.erase(it);
-            std::cout << "Removed tool: " << name;
+            std::cout << "Removed tool: " << name << "\n";
             return;
         }
     }
-    std::cout << "Tool not found: " << name;
+    std::cout << "Tool not found: " << name << "\n";
 }
 
 bool Inventory::removeMedicineAmount(const std::string& name, int amount) {
@@ -117,7 +116,6 @@ bool Inventory::removeMedicineAmount(const std::string& name, int amount) {
     med->removeAmount(amount);
     std::cout << "Removed " << amount << " of " << name << "\n";
     
- 
     if (med->getAmount() == 0) {
         removeMedicine(name);
         std::cout << name << " is now out of stock and removed from inventory.\n";
