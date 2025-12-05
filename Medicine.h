@@ -9,6 +9,9 @@ class Medicine{
         int amount;
         std::string expirationmonth;
         int expirationyear;
+        
+        // Helper function to convert month name to number
+        int monthToNumber(const std::string& month) const;
 
     public:
         Medicine(std::string mname, int mamount, std::string exmonth, int exyear);
